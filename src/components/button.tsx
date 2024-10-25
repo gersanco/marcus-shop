@@ -8,6 +8,7 @@ type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   color?: Color | "ghost";
   size?: Size;
   variant?: "outline" | "link";
+  block?: boolean;
 };
 
 export default function Button({
@@ -16,6 +17,7 @@ export default function Button({
   color,
   size,
   variant,
+  block,
   ...props
 }: Props) {
   const classList = cn("btn", className, {
@@ -34,6 +36,7 @@ export default function Button({
     "btn-lg": size === "lg",
     "btn-outline": variant === "outline",
     "btn-link": variant === "link",
+    "btn-block": block,
   });
 
   return (
