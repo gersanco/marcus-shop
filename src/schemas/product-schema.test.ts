@@ -1,5 +1,5 @@
 import { expect, test, describe } from "vitest";
-import ProductSchema from "./product-schema";
+import { ProductSchema } from "./product-schema";
 
 describe("ProductSchema", () => {
   test("should validate a correct product", () => {

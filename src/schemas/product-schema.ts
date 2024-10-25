@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-const ProductSchema = z.object({
+export const ProductSchema = z.object({
   uid: z.string().optional(),
   title: z.string(),
   description: z.string(),
@@ -11,5 +11,3 @@ const ProductSchema = z.object({
 });
 
 export type Product = z.infer<typeof ProductSchema>;
-
-export default ProductSchema;
