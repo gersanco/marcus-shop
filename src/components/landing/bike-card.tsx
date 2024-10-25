@@ -7,7 +7,7 @@ import Image from "next/image";
 type Props = Product;
 export default function BikeCard({ title, price, image }: Props) {
   return (
-    <Card className="shadow-xl bg-base-100 max-ºw-96">
+    <Card className="shadow-xl bg-base-100 max-w-96">
       <Image
         src={image}
         alt={title}
