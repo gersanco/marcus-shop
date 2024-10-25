@@ -9,6 +9,7 @@ export const products_data: Product[] = [
     inStock: 10,
     category: "Bikes",
     slug: "mountain-bike",
+    image: "/assets/placeholder.svg",
   },
   {
     uid: "bike2",
@@ -18,6 +19,7 @@ export const products_data: Product[] = [
     inStock: 5,
     category: "Bikes",
     slug: "road-bike",
+    image: "/assets/placeholder.svg",
   },
   {
     uid: "bike3",
@@ -28,6 +30,7 @@ export const products_data: Product[] = [
     inStock: 8,
     category: "Bikes",
     slug: "hybrid-bike",
+    image: "/assets/placeholder.svg",
   },
   {
     uid: "bike4",
@@ -38,6 +41,7 @@ export const products_data: Product[] = [
     inStock: 3,
     category: "Bikes",
     slug: "electric-bike",
+    image: "/assets/placeholder.svg",
   },
   {
     uid: "bike5",
@@ -47,5 +51,6 @@ export const products_data: Product[] = [
     inStock: 12,
     category: "Bikes",
     slug: "folding-bike",
+    image: "/assets/placeholder.svg",
   },
 ];
