@@ -1,4 +1,5 @@
 import React, { ReactNode } from "react";
+import cn from "@/libs/cn";
 
 type Props = React.HtmlHTMLAttributes<HTMLDivElement> & {
   children?: ReactNode;
@@ -6,32 +7,36 @@ type Props = React.HtmlHTMLAttributes<HTMLDivElement> & {
 };
 
 function Card({ children, className, ...props }: Props) {
+  const classList = cn("card", className);
   return (
-    <article className={className} {...props}>
+    <article className={classList} {...props}>
       {children}
     </article>
   );
 }
 
 function CardHeader({ children, className, ...props }: Props) {
+  const classList = cn("card-title", className);
   return (
-    <header className={className} {...props}>
+    <header className={classList} {...props}>
       {children}
     </header>
   );
 }
 
 function CardBody({ children, className, ...props }: Props) {
+  const classList = cn("card-body", className);
   return (
-    <div className={className} {...props}>
+    <div className={classList} {...props}>
       {children}
     </div>
   );
 }
 
 function CardActions({ children, className, ...props }: Props) {
+  const classList = cn("card-actions", className);
   return (
-    <div className={className} {...props}>
+    <div className={classList} {...props}>
       {children}
     </div>
   );
