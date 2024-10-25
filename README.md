@@ -1,6 +1,5 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# Getting Started
 
 First, run the development server:
 
@@ -16,21 +15,51 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Description
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Bicycle Shop
 
-## Learn More
+You're tasked with building a website that allows Marcus, a bicycle shop owner, to sell his bicycles.
 
-To learn more about Next.js, take a look at the following resources:
+Marcus owns a growing business and now wants to sell online. He also tells you that bicycles are his main product, but if the business continues to grow, he will surely start selling other sports-related items such as skis, surfboards, roller skates, etc. It would be a nice bonus if the same website allowed him to sell those things as well.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+What makes Marcus's business successful is that customers can fully customize their bicycles. They can select many different options for the various parts of the bicycle. Here is an incomplete list of all the parts and their possible choices, to give an example:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Frame type: Full-suspension, diamond, step-through
+- Frame finish: Matte, shiny
+- Wheels: Road wheels, mountain wheels, fat bike wheels
+- Rim color: Red, black, blue
+- Chain: Single-speed chain, 8-speed chain
 
-## Deploy on Vercel
+On top of that, Marcus points out that some combinations are prohibited because they are not possible in reality. For example:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- If you select "mountain wheels," then the only frame available is the full-suspension.
+- If you select "fat bike wheels," then the red rim color is unavailable because the manufacturer doesn't provide it.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Additionally, Marcus sometimes doesn't have all possible variations of each part in stock, so he wants to be able to mark them as "temporarily out of stock" to avoid receiving orders he can't fulfill.
+
+Finally, Marcus explains how to calculate the price that you should present to the customer after customizing a bicycle. Normally, this price is calculated by adding up the individual prices of each selected part. For example:
+
+- Full suspension = 130 EUR
+- Shiny frame = 30 EUR
+- Road wheels = 80 EUR
+- Rim color blue = 20 EUR
+- Chain: Single-speed chain = 43 EUR
+- **Total price:** 130 + 30 + 80 + 20 + 43 = 303 EUR
+
+However, the price of some options might depend on others. For instance, the frame finish is applied over the whole bicycle, so the more area to cover, the more expensive it gets. Because of that, the matte finish over a full-suspension frame costs 50 EUR, while applied over a diamond frame it costs 35 EUR.
+
+These kinds of variations can always happen, and they might depend on any of the other choices, so Marcus asks you to consider this, as otherwise, he would be losing money.
+
+### Code Exercise Overview
+
+This code exercise consists of defining a software architecture that could satisfy the requirements described above. In particular:
+
+- **Data model:** What data model would best support this application? Can you describe it? Include table specifications (or documents if it's a non-relational database) with fields, their associations, and the meaning of each entity.
+- **Main user actions:** Explain the main actions users would take on this e-commerce website in detail.
+- **Product page:** This is a read operation, performed when displaying a product page for the customer to purchase. How would you present this UI? How would you calculate which options are available? How would you calculate the price depending on the customer's selections?
+- **Add to cart action:** Once the customer makes their selection, there should be an "add to cart" button. What happens when the customer clicks this button? What is persisted in the database?
+- **Administrative workflows:** Describe the main workflows for Marcus to manage his store.
+- **New product creation:** What information is required to create a new product? How does the database change?
+- **Adding a new part choice:** How can Marcus introduce a new rim color? Describe the UI and how the database changes.
+- **Setting prices:** How can Marcus change the price of a specific part or specify particular pricing for combinations of choices? How does the UI and database handle this?
