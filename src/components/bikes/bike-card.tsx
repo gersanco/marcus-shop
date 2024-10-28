@@ -3,13 +3,14 @@ import { Product } from "@/schemas/product-schema";
 import Card from "../card";
 import Button from "../button";
 import Image from "next/image";
+import { DEFAULT_IMAGE } from "@/libs/constants";
 
 type Props = Product;
 export default function BikeCard({ title, price, image }: Props) {
   return (
     <Card className="shadow-xl bg-base-100 max-w-96">
       <Image
-        src={image}
+        src={image || DEFAULT_IMAGE}
         alt={title}
         width={400}
         height={300}
