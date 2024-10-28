@@ -26,7 +26,7 @@ export const products_data: Product[] = [
       "An electric bike perfect for daily commutes with minimal effort.",
     price: 2000.0,
     inStock: 3,
-    category: "Electric",
+    category: "electric",
     slug: "electric-commuter-bike",
   },
   {
@@ -35,7 +35,7 @@ export const products_data: Product[] = [
     description: "A durable mountain bike for exploring off-road paths.",
     price: 900.0,
     inStock: 10,
-    category: "Mountain",
+    category: "mountain",
     slug: "mountain-bike-explorer",
   },
   {
@@ -44,7 +44,7 @@ export const products_data: Product[] = [
     description: "A fast road bike for competitive cycling.",
     price: 1300.0,
     inStock: 7,
-    category: "Road",
+    category: "road",
     slug: "road-bike-speedster",
   },
   {
@@ -54,7 +54,7 @@ export const products_data: Product[] = [
       "An electric mountain bike for tackling tough terrains with ease.",
     price: 2500.0,
     inStock: 4,
-    category: "Electric",
+    category: "electric",
     slug: "electric-mountain-bike",
   },
   {
@@ -72,7 +72,7 @@ export const products_data: Product[] = [
     description: "A road bike built for speed and endurance.",
     price: 1400.0,
     inStock: 9,
-    category: "Road",
+    category: "road",
     slug: "road-bike-racer",
   },
   {
@@ -81,7 +81,7 @@ export const products_data: Product[] = [
     description: "An electric bike designed for urban commuting.",
     price: 1800.0,
     inStock: 5,
-    category: "Electric",
+    category: "electric",
     slug: "electric-urban-bike",
   },
   {
@@ -90,7 +90,7 @@ export const products_data: Product[] = [
     description: "A mountain bike for adventurous off-road rides.",
     price: 1000.0,
     inStock: 8,
-    category: "Mountain",
+    category: "mountain",
     slug: "mountain-bike-adventurer",
   },
   {
@@ -99,7 +99,7 @@ export const products_data: Product[] = [
     description: "A road bike designed for sprinting and high-speed rides.",
     price: 1600.0,
     inStock: 6,
-    category: "Road",
+    category: "road",
     slug: "road-bike-sprint",
   },
   {
@@ -108,7 +108,7 @@ export const products_data: Product[] = [
     description: "An electric bike with a large cargo area for carrying goods.",
     price: 2200.0,
     inStock: 4,
-    category: "Electric",
+    category: "electric",
     slug: "electric-cargo-bike",
   },
   {
@@ -117,7 +117,7 @@ export const products_data: Product[] = [
     description: "A mountain bike designed for climbing steep hills.",
     price: 1300.0,
     inStock: 7,
-    category: "Mountain",
+    category: "mountain",
     slug: "mountain-bike-climber",
   },
   {
@@ -126,7 +126,7 @@ export const products_data: Product[] = [
     description: "A road bike built for long-distance touring.",
     price: 1700.0,
     inStock: 5,
-    category: "Road",
+    category: "road",
     slug: "road-bike-touring",
   },
   {
@@ -135,7 +135,7 @@ export const products_data: Product[] = [
     description: "A compact electric bike that folds for easy storage.",
     price: 1900.0,
     inStock: 6,
-    category: "Electric",
+    category: "electric",
     slug: "electric-folding-bike",
   },
 ];
