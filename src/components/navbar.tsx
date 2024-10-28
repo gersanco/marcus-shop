@@ -12,28 +12,28 @@ export default function Navbar() {
         </Link>
         <nav className="hidden md:flex gap-6">
           <Link
-            href="#"
+            href="/bikes"
+            className="text-sm font-medium hover:underline underline-offset-4"
+          >
+            All Bikes
+          </Link>
+          <Link
+            href="/bikes/road"
             className="text-sm font-medium hover:underline underline-offset-4"
           >
             Road Bikes
           </Link>
           <Link
-            href="#"
+            href="/bikes/mountain"
             className="text-sm font-medium hover:underline underline-offset-4"
           >
             Mountain Bikes
           </Link>
           <Link
-            href="#"
+            href="/bikes/electric"
             className="text-sm font-medium hover:underline underline-offset-4"
           >
             Electric Bikes
-          </Link>
-          <Link
-            href="#"
-            className="text-sm font-medium hover:underline underline-offset-4"
-          >
-            Accessories
           </Link>
         </nav>
         <div className="flex items-center space-x-4">
