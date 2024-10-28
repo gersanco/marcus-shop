@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import Button from "../button";
+import Link from "next/link";
 
 export default function HeroSection() {
   return (
@@ -25,9 +26,11 @@ export default function HeroSection() {
               </p>
             </div>
             <div className="flex flex-col gap-2 min-[400px]:flex-row">
-              <Button size="lg" color="neutral">
-                Shop Now
-              </Button>
+              <Link href="/bikes">
+                <Button size="lg" color="neutral">
+                  Shop Now
+                </Button>
+              </Link>
               <Button size="lg" variant="outline">
                 Learn More
               </Button>
