@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
-import { LuBike, LuMenu, LuShoppingCart } from "react-icons/lu";
+import { LuBike, LuMenu } from "react-icons/lu";
+import CartButton from "./cart/cart-button";
 
 export default function Navbar() {
   return (
@@ -43,9 +44,7 @@ export default function Navbar() {
           </Link>
         </nav>
         <div className="flex items-center space-x-4">
-          <Link href="/cart" className="hidden md:block">
-            <LuShoppingCart className="h-6 w-6" />
-          </Link>
+          <CartButton />
           <button className="btn btn-outline md:hidden">
             <LuMenu className="h-6 w-6" />
           </button>
