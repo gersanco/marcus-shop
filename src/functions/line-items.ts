@@ -1,13 +1,13 @@
-"use server";
-
 import { cookies } from "next/headers";
-const cookiesStore = cookies();
 
 export function getLineItems() {
-  return JSON.parse(cookies().get("cart")?.value || "[]");
+  const cookiesStore = cookies();
+  return JSON.parse(cookiesStore.get("cart")?.value || "[]");
 }
 
 export function addLineItem(itemId: string) {
+  const cookiesStore = cookies();
+
   const lineItems: string[] = JSON.parse(
     cookiesStore.get("cart")?.value || "[]"
   );
@@ -18,6 +18,8 @@ export function addLineItem(itemId: string) {
 }
 
 export function hasLineItem(itemId: string) {
+  const cookiesStore = cookies();
+
   const lineItems: string[] = JSON.parse(
     cookiesStore.get("cart")?.value || "[]"
   );
