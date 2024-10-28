@@ -1,7 +1,10 @@
 import { products_data } from "../data/products";
 
-export function listProducts() {
-  // TODO: add filters
+export function listProducts(category?: string) {
+  if (category) {
+    return products_data.filter((prod) => prod.category === category);
+  }
+
   return products_data;
 }
 

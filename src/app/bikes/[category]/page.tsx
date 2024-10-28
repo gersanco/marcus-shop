@@ -1,11 +1,15 @@
+import { listProducts } from "@/libs/product-service";
+import BikeGrid from "@/components/bikes/bike-grid";
+
 export default function CategoryPage({
   params,
 }: {
   params: { category: string };
 }) {
+  const bikes = listProducts(params.category);
   return (
     <div>
-      <h1>Hello {params.category}</h1>
+      <BikeGrid bikes={bikes} />
     </div>
   );
 }
