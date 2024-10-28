@@ -35,6 +35,12 @@ export default function Navbar() {
           >
             Electric Bikes
           </Link>
+          <Link
+            href="/bikes/custom"
+            className="text-sm font-medium hover:underline underline-offset-4"
+          >
+            Custom your bike
+          </Link>
         </nav>
         <div className="flex items-center space-x-4">
           <Link href="/cart" className="hidden md:block">
