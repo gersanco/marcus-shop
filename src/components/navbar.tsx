@@ -37,7 +37,7 @@ export default function Navbar() {
           </Link>
         </nav>
         <div className="flex items-center space-x-4">
-          <Link href="#" className="hidden md:block">
+          <Link href="/cart" className="hidden md:block">
             <LuShoppingCart className="h-6 w-6" />
           </Link>
           <button className="btn btn-outline md:hidden">
