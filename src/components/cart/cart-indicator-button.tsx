@@ -1,10 +1,10 @@
-import { cookies } from "next/headers";
 import Link from "next/link";
 import React from "react";
 import { LuShoppingCart } from "react-icons/lu";
+import { getLineItems } from "@/functions/line-items";
 
 export default function CartIndicatorButton() {
-  const lineItems = cookies().get("cart")?.value || [];
+  const lineItems = getLineItems();
 
   return (
     <Link href="/cart" className="indicator hidden md:block">
