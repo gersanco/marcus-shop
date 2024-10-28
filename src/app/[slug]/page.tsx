@@ -1,8 +1,8 @@
 import { findProduct } from "@/libs/product-service";
 import { notFound } from "next/navigation";
-import Button from "@/components/button";
 import Image from "next/image";
 import { DEFAULT_IMAGE } from "@/libs/constants";
+import AddToCartButton from "@/components/cart/add-to-cart-button";
 
 export default function ProductPage({ params }: { params: { slug: string } }) {
   const bike = findProduct(params.slug);
@@ -30,9 +30,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
           </div>
           <div className="text-4xl font-bold">{bike.price} €</div>
         </div>
-        <Button size="lg" color="neutral">
-          Add to Cart
-        </Button>
+        <AddToCartButton productId={bike.uid as string} />
       </div>
     </div>
   );
