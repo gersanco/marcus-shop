@@ -4,9 +4,10 @@ import Card from "../card";
 import Button from "../button";
 import Image from "next/image";
 import { DEFAULT_IMAGE } from "@/libs/constants";
+import Link from "next/link";
 
 type Props = Product;
-export default function BikeCard({ title, price, image }: Props) {
+export default function BikeCard({ title, price, image, slug }: Props) {
   return (
     <Card className="shadow-xl bg-base-100 max-w-96">
       <Image
@@ -20,9 +21,11 @@ export default function BikeCard({ title, price, image }: Props) {
         <Card.Header className="font-bold">{title}</Card.Header>
         <p className="text-gray-400">{price} €</p>
         <Card.Actions>
-          <Button color="neutral" block>
-            Add to Cart
-          </Button>
+          <Link href={`/${slug}`}>
+            <Button color="neutral" block>
+              View more
+            </Button>
+          </Link>
         </Card.Actions>
       </Card.Body>
     </Card>
