@@ -6,7 +6,7 @@ import calculateSubTotalPrice from "@/libs/calculate-sub-total-price";
 import { SHIPPING_PRICE, SHOP_TAX_RATE } from "@/libs/constants";
 import calculateTaxes from "@/libs/calculate-taxes";
 
-export const getData = () => {
+const getData = () => {
   const lineItems = getLineItems();
 
   const subtotal = calculateSubTotalPrice(lineItems);
