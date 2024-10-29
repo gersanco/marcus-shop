@@ -15,6 +15,13 @@ export function getLineItems() {
   return lineItem;
 }
 
+export function getTotalLineItems() {
+  const cookiesStore = cookies();
+  const items: string[] = JSON.parse(cookiesStore.get("cart")?.value || "[]");
+
+  return items.length;
+}
+
 export function addLineItem(itemId: string) {
   const cookiesStore = cookies();
 
@@ -35,4 +42,30 @@ export function hasLineItem(itemId: string) {
   );
 
   return lineItems.includes(itemId);
+}
+
+export function decreaseLineItem(itemId: string) {
+  const cookiesStore = cookies();
+
+  const lineItems: string[] = JSON.parse(
+    cookiesStore.get("cart")?.value || "[]"
+  );
+
+  const index = lineItems.indexOf(itemId);
+
+  lineItems.splice(index, 1);
+
+  cookiesStore.set("cart", JSON.stringify(lineItems));
+}
+
+export function removeLineItem(itemId: string) {
+  const cookiesStore = cookies();
+
+  const lineItems: string[] = JSON.parse(
+    cookiesStore.get("cart")?.value || "[]"
+  );
+
+  const items = lineItems.filter((lineItem) => lineItem !== itemId);
+
+  cookiesStore.set("cart", JSON.stringify(items));
 }

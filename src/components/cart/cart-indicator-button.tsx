@@ -1,16 +1,16 @@
 import Link from "next/link";
 import React from "react";
 import { LuShoppingCart } from "react-icons/lu";
-import { getLineItems } from "@/functions/line-items";
+import { getTotalLineItems } from "@/functions/line-items";
 
 export default function CartIndicatorButton() {
-  const lineItems = getLineItems();
+  const lineItems = getTotalLineItems();
 
   return (
     <Link href="/cart" className="indicator hidden md:block">
-      {lineItems.length > 0 && (
+      {lineItems > 0 && (
         <span className="indicator-item badge badge-secondary">
-          {lineItems.length}
+          {lineItems}
         </span>
       )}
 

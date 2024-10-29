@@ -2,7 +2,7 @@
 
 import React from "react";
 import Button from "../button";
-import addProductToCartAction from "@/actions/cart/add-product-to-cart-action";
+import { addProductToCartAction } from "@/actions/cart";
 
 type Props = {
   productId: string;

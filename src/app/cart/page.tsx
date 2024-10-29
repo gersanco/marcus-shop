@@ -2,6 +2,7 @@ import { LuPlus, LuMinus, LuTrash2 } from "react-icons/lu";
 import Button from "@/components/button";
 import { getLineItems } from "@/functions/line-items";
 import calculateTotalPrice from "@/libs/calculate-total-price";
+import CartActions from "@/components/cart/cart-actions";
 
 const getData = async () => {
   const items = getLineItems();
@@ -10,8 +11,6 @@ const getData = async () => {
 };
 
 export default async function CartPage() {
-  // const cartItems = parseCartItems(searchParams.items);
-
   const cartItems = await getData();
   const totalPrice = calculateTotalPrice(cartItems);
 
@@ -34,7 +33,7 @@ export default async function CartPage() {
                 </p>
               </div>
               <div className="flex items-center space-x-2">
-                <form>
+                <CartActions productId={item.uid}>
                   <Button
                     name="action"
                     value="decrease"
@@ -60,7 +59,7 @@ export default async function CartPage() {
                   >
                     <LuTrash2 className="h-4 w-4 text-error" />
                   </Button>
-                </form>
+                </CartActions>
               </div>
             </div>
           ))}
