@@ -1,9 +1,10 @@
+import Link from "next/link";
 import { LuPlus, LuMinus, LuTrash2 } from "react-icons/lu";
 import Button from "@/components/button";
 import { getLineItems } from "@/functions/line-items";
 import calculateTotalPrice from "@/libs/calculate-total-price";
 import CartActions from "@/components/cart/cart-actions";
-import Link from "next/link";
+import PriceTag from "@/components/cart/price-tag";
 
 const getData = async () => {
   const items = getLineItems();
@@ -66,7 +67,7 @@ export default async function CartPage() {
           ))}
           <div className="flex justify-between items-center pt-4">
             <span className="text-xl font-bold">Total:</span>
-            <span className="text-xl">{totalPrice.toFixed(2)} €</span>
+            <PriceTag price={totalPrice} />
           </div>
           <Link href="/checkout">
             <Button color="neutral" className="w-full">
