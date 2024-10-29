@@ -2,7 +2,7 @@ import Link from "next/link";
 import { LuPlus, LuMinus, LuTrash2 } from "react-icons/lu";
 import Button from "@/components/button";
 import { getLineItems } from "@/functions/line-items";
-import calculateTotalPrice from "@/libs/calculate-total-price";
+import calculateSubTotalPrice from "@/libs/calculate-sub-total-price";
 import CartActions from "@/components/cart/cart-actions";
 import PriceTag from "@/components/cart/price-tag";
 
@@ -14,7 +14,7 @@ const getData = async () => {
 
 export default async function CartPage() {
   const cartItems = await getData();
-  const totalPrice = calculateTotalPrice(cartItems);
+  const totalPrice = calculateSubTotalPrice(cartItems);
 
   return (
     <div className="container mx-auto p-4">
