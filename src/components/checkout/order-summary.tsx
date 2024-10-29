@@ -1,8 +1,9 @@
+import { SHOP_TAX_RATE } from "@/libs/constants";
 import Card from "../card";
 import PriceTag from "../cart/price-tag";
 
 type OrderItem = {
-  id: string;
+  uid: string;
   name: string;
   price: number;
   quantity: number;
@@ -16,6 +17,8 @@ type Order = {
   total: number;
 };
 
+const TAX_PERCENTAJE = SHOP_TAX_RATE * 100;
+
 export default function OrderSummary({ order }: { order: Order }) {
   return (
     <Card className="shadow-xl">
@@ -23,7 +26,7 @@ export default function OrderSummary({ order }: { order: Order }) {
         <Card.Header>Order Summary</Card.Header>
         <div className="space-y-4">
           {order.items.map((item) => (
-            <div key={item.id} className="flex justify-between">
+            <div key={item.uid} className="flex justify-between">
               <span>
                 {item.name} x {item.quantity}
               </span>
@@ -36,7 +39,7 @@ export default function OrderSummary({ order }: { order: Order }) {
               <PriceTag price={order.subtotal} />
             </div>
             <div className="flex justify-between">
-              <span>Tax</span>
+              <span>Tax ({TAX_PERCENTAJE}%)</span>
               <PriceTag price={order.tax} />
             </div>
             <div className="flex justify-between">

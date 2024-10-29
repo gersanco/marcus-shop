@@ -1,26 +1,39 @@
 import OrderSummary from "@/components/checkout/order-summary";
 import BillingInfoForm from "@/components/checkout/billing-info-form";
 import PaymentList from "@/components/checkout/payment-list";
+import { getLineItems } from "@/functions/line-items";
+import calculateSubTotalPrice from "@/libs/calculate-sub-total-price";
+import { SHIPPING_PRICE, SHOP_TAX_RATE } from "@/libs/constants";
+import calculateTaxes from "@/libs/calculate-taxes";
 
-const sampleOrder = {
-  items: [
-    { id: "1", name: "Product 1", price: 19.99, quantity: 2 },
-    { id: "2", name: "Product 2", price: 29.99, quantity: 1 },
-  ],
-  subtotal: 69.97,
-  tax: 5.6,
-  shipping: 5.0,
-  total: 80.57,
+export const getData = () => {
+  const lineItems = getLineItems();
+
+  const subtotal = calculateSubTotalPrice(lineItems);
+  const tax = calculateTaxes(subtotal, SHOP_TAX_RATE);
+  const shipping = SHIPPING_PRICE;
+
+  const total = subtotal + shipping + tax;
+
+  return {
+    items: lineItems,
+    subtotal,
+    tax,
+    shipping,
+    total,
+  };
 };
 
 export default function CheckoutPage() {
+  const order = getData();
+
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-8">Checkout</h1>
       <div className="grid md:grid-cols-2 gap-8">
         <BillingInfoForm />
         <div className="mt-10 lg:mt-0">
-          <OrderSummary order={sampleOrder} />
+          <OrderSummary order={order} />
 
           <PaymentList />
         </div>
