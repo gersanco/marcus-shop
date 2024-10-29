@@ -3,6 +3,7 @@ import Button from "@/components/button";
 import { getLineItems } from "@/functions/line-items";
 import calculateTotalPrice from "@/libs/calculate-total-price";
 import CartActions from "@/components/cart/cart-actions";
+import Link from "next/link";
 
 const getData = async () => {
   const items = getLineItems();
@@ -67,7 +68,11 @@ export default async function CartPage() {
             <span className="text-xl font-bold">Total:</span>
             <span className="text-xl">{totalPrice.toFixed(2)} €</span>
           </div>
-          <Button className="w-full">Proceed to Checkout</Button>
+          <Link href="/checkout">
+            <Button color="neutral" className="w-full">
+              Proceed to Checkout
+            </Button>
+          </Link>
         </div>
       )}
     </div>
