@@ -27,6 +27,7 @@ export default function BillingInfoForm() {
       postalCode: "",
       phone: "",
       apartment: "",
+      city: "",
       taxNumber: "",
     },
     reValidateMode: "onChange",
@@ -67,19 +68,21 @@ export default function BillingInfoForm() {
             {...register("company")}
             error={errors.company?.message}
           />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <Input
+              label="First Name"
+              type="text"
+              {...register("firstName")}
+              error={errors.firstName?.message}
+            />
+            <Input
+              label="Last Name"
+              type="text"
+              {...register("lastName")}
+              error={errors.lastName?.message}
+            />
+          </div>
 
-          <Input
-            label="First Name"
-            type="text"
-            {...register("firstName")}
-            error={errors.firstName?.message}
-          />
-          <Input
-            label="Last Name"
-            type="text"
-            {...register("lastName")}
-            error={errors.lastName?.message}
-          />
           <Input
             label="Address"
             type="text"
@@ -92,24 +95,35 @@ export default function BillingInfoForm() {
             {...register("apartment")}
             error={errors.apartment?.message}
           />
-          <Input
-            label="Country"
-            type="text"
-            {...register("country")}
-            error={errors.country?.message}
-          />
-          <Input
-            label="Province"
-            type="text"
-            {...register("province")}
-            error={errors.province?.message}
-          />
-          <Input
-            label="Postal code"
-            type="text"
-            {...register("postalCode")}
-            error={errors.postalCode?.message}
-          />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <Input
+              label="City"
+              type="text"
+              {...register("city")}
+              error={errors.city?.message}
+            />
+            <Input
+              label="Country"
+              type="text"
+              {...register("country")}
+              error={errors.country?.message}
+            />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <Input
+              label="Province"
+              type="text"
+              {...register("province")}
+              error={errors.province?.message}
+            />
+            <Input
+              label="Postal code"
+              type="text"
+              {...register("postalCode")}
+              error={errors.postalCode?.message}
+            />
+          </div>
           <Input
             label="Phone"
             type="text"
