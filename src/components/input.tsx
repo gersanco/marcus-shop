@@ -9,12 +9,12 @@ type Props = React.InputHTMLAttributes<HTMLInputElement> & {
 
 const Input = React.forwardRef<HTMLInputElement, Props>(
   ({ className, label, type, error, ...props }, ref) => {
-    const classList = cn("input input-bordered w-full max-w-md", className, {
+    const classList = cn("input input-bordered", className, {
       "input-error": Boolean(error),
     });
 
     return (
-      <label className="form-control w-full max-w-md">
+      <label className="form-control">
         <div className="label">
           <span className="label-text">{label}</span>
         </div>
