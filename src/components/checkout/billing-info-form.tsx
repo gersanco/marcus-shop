@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { BillingInfo, BillingInfoSchema } from "@/schemas/billing-info-schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Button from "../button";
+import Radio from "../radio";
 
 export default function BillingInfoForm() {
   const {
@@ -46,6 +47,19 @@ export default function BillingInfoForm() {
             {...register("email")}
             error={errors.email?.message}
           />
+
+          <div>
+            <Radio
+              label="Particular"
+              {...register("clientType")}
+              value="particular"
+            />
+            <Radio
+              label="Company"
+              {...register("clientType")}
+              value="company"
+            />
+          </div>
 
           <Input
             label="Company"
