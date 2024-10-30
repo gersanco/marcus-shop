@@ -8,7 +8,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Button from "../button";
 
 export default function BillingInfoForm() {
-  const { register, handleSubmit } = useForm<BillingInfo>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<BillingInfo>({
     resolver: zodResolver(BillingInfoSchema),
     defaultValues: {
       email: "",
@@ -24,6 +28,7 @@ export default function BillingInfoForm() {
       apartment: "",
       taxNumber: "",
     },
+    reValidateMode: "onChange",
   });
 
   const onSubmit = (data: BillingInfo) => console.log("BillingInfo", data);
@@ -34,19 +39,75 @@ export default function BillingInfoForm() {
         <Card.Header>
           <h2>Billing Information</h2>
         </Card.Header>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <Input label="Email" type="email" {...register("email")} />
-          <Input label="Company" type="text" {...register("company")} />
+        <form onSubmit={handleSubmit(onSubmit)} noValidate>
+          <Input
+            label="Email"
+            type="email"
+            {...register("email")}
+            error={errors.email?.message}
+          />
 
-          <Input label="First Name" type="text" {...register("firstName")} />
-          <Input label="Last Name" type="text" {...register("lastName")} />
-          <Input label="Address" type="text" {...register("address")} />
-          <Input label="Apartment" type="text" {...register("apartment")} />
-          <Input label="Country" type="text" {...register("country")} />
-          <Input label="Province" type="text" {...register("province")} />
-          <Input label="Postal code" type="text" {...register("postalCode")} />
-          <Input label="Phone" type="text" {...register("phone")} />
-          <Input label="Tax Number" type="text" {...register("taxNumber")} />
+          <Input
+            label="Company"
+            type="text"
+            {...register("company")}
+            error={errors.company?.message}
+          />
+
+          <Input
+            label="First Name"
+            type="text"
+            {...register("firstName")}
+            error={errors.firstName?.message}
+          />
+          <Input
+            label="Last Name"
+            type="text"
+            {...register("lastName")}
+            error={errors.lastName?.message}
+          />
+          <Input
+            label="Address"
+            type="text"
+            {...register("address")}
+            error={errors.address?.message}
+          />
+          <Input
+            label="Apartment"
+            type="text"
+            {...register("apartment")}
+            error={errors.apartment?.message}
+          />
+          <Input
+            label="Country"
+            type="text"
+            {...register("country")}
+            error={errors.country?.message}
+          />
+          <Input
+            label="Province"
+            type="text"
+            {...register("province")}
+            error={errors.province?.message}
+          />
+          <Input
+            label="Postal code"
+            type="text"
+            {...register("postalCode")}
+            error={errors.postalCode?.message}
+          />
+          <Input
+            label="Phone"
+            type="text"
+            {...register("phone")}
+            error={errors.phone?.message}
+          />
+          <Input
+            label="Tax Number"
+            type="text"
+            {...register("taxNumber")}
+            error={errors.taxNumber?.message}
+          />
           <Button color="neutral" type="submit">
             Submit
           </Button>
