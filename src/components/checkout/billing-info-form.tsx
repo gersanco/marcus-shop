@@ -48,7 +48,7 @@ export default function BillingInfoForm() {
             error={errors.email?.message}
           />
 
-          <div>
+          <div className="flex gap-3">
             <Radio
               label="Particular"
               {...register("clientType")}

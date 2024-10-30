@@ -11,7 +11,7 @@ const Radio = React.forwardRef<HTMLInputElement, Props>(
 
     return (
       <div className="form-control">
-        <label className="label cursor-pointer">
+        <label className="label cursor-pointer space-x-1">
           <span className="label-text">{label}</span>
           <input
             type="radio"
