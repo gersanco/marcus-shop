@@ -41,7 +41,7 @@ export default function BillingInfoForm() {
         <Card.Header>
           <h2>Billing Information</h2>
         </Card.Header>
-        <form onSubmit={handleSubmit(onSubmit)} noValidate>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <Input
             label="Email"
             type="email"
