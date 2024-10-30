@@ -14,8 +14,12 @@ export default function PaymentList() {
           </Card.Header>
 
           <div className="flex flex-col gap-5">
-            <Button color="primary">Google Pay</Button>
-            <Button color="neutral">Apple Pay</Button>
+            <Button color="primary" form="billing-form">
+              Google Pay
+            </Button>
+            <Button color="neutral" form="billing-form">
+              Apple Pay
+            </Button>
           </div>
         </Card.Body>
       </Card>

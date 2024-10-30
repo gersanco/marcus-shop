@@ -5,7 +5,6 @@ import Card from "../card";
 import { useForm } from "react-hook-form";
 import { BillingInfo, BillingInfoSchema } from "@/schemas/billing-info-schema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import Button from "../button";
 import Radio from "../radio";
 
 export default function BillingInfoForm() {
@@ -41,7 +40,7 @@ export default function BillingInfoForm() {
         <Card.Header>
           <h2>Billing Information</h2>
         </Card.Header>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} id="billing-form">
           <Input
             label="Email"
             type="email"
@@ -136,9 +135,6 @@ export default function BillingInfoForm() {
             {...register("taxNumber")}
             error={errors.taxNumber?.message}
           />
-          <Button color="neutral" type="submit">
-            Submit
-          </Button>
         </form>
       </Card.Body>
     </Card>
