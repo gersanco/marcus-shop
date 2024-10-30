@@ -1,6 +1,5 @@
 import OrderSummary from "@/components/checkout/order-summary";
 import BillingInfoForm from "@/components/checkout/billing-info-form";
-import PaymentList from "@/components/checkout/payment-list";
 import { getLineItems } from "@/functions/line-items";
 import calculateSubTotalPrice from "@/libs/calculate-sub-total-price";
 import { SHIPPING_PRICE, SHOP_TAX_RATE } from "@/libs/constants";
@@ -34,8 +33,6 @@ export default function CheckoutPage() {
         <BillingInfoForm />
         <div className="mt-10 lg:mt-0">
           <OrderSummary order={order} />
-
-          <PaymentList />
         </div>
       </div>
     </div>

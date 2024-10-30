@@ -1,6 +1,7 @@
 import { SHOP_TAX_RATE } from "@/libs/constants";
 import Card from "../card";
 import PriceTag from "../cart/price-tag";
+import Button from "../button";
 
 type OrderItem = {
   uid: string;
@@ -33,7 +34,8 @@ export default function OrderSummary({ order }: { order: Order }) {
               <PriceTag price={item.price * item.quantity} />
             </div>
           ))}
-          <div className="border-t pt-4">
+          <div className="divider"></div>
+          <div>
             <div className="flex justify-between">
               <span>Subtotal</span>
               <PriceTag price={order.subtotal} />
@@ -50,6 +52,12 @@ export default function OrderSummary({ order }: { order: Order }) {
               <span>Total</span>
               <PriceTag price={order.total} />
             </div>
+          </div>
+          <div className="divider"></div>
+          <div>
+            <Button color="primary" form="billing-form" className="w-full">
+              Confirm order
+            </Button>
           </div>
         </div>
       </Card.Body>
