@@ -1,10 +1,9 @@
 import React from "react";
-import { listProducts } from "@/libs/product-service";
-import BikeCard from "../bikes/bike-card";
+
 import GridProducts from "../grid-products";
+import CategoryCard from "../bikes/category-card";
 
 export default function FeatureSection() {
-  const bikes = listProducts();
   return (
     <section className="w-full py-12 md:py-24 lg:py-32 bg-base-100">
       <div className="container px-4 md:px-6">
@@ -13,9 +12,10 @@ export default function FeatureSection() {
         </h2>
 
         <GridProducts>
-          {bikes.map((bike) => (
-            <BikeCard {...bike} key={bike.slug} />
-          ))}
+          <CategoryCard category="road" />
+          <CategoryCard category="mountain" />
+          <CategoryCard category="electric" />
+          <CategoryCard category="custom" />
         </GridProducts>
       </div>
     </section>
