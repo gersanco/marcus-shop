@@ -10,6 +10,7 @@ const baseSchema = z.object({
   address: z.string(),
   apartment: z.string(),
   country: z.string(),
+  city: z.string(),
   province: z.string(),
   postalCode: z.string(),
   phone: z.string(),

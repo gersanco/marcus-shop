@@ -16,6 +16,7 @@ const validBillingInfo = {
   lastName: "Doe",
   address: "123 Main St",
   apartment: "Apt 4B",
+  city: "Sprigfield",
   country: "USA",
   province: "NY",
   postalCode: "10001",

@@ -10,6 +10,7 @@ describe("BillingInfoSchema", () => {
       lastName: "Doe",
       address: "123 Main St",
       apartment: "Apt 4B",
+      city: "New York",
       country: "USA",
       province: "NY",
       postalCode: "10001",
@@ -28,6 +29,7 @@ describe("BillingInfoSchema", () => {
       lastName: "Doe",
       address: "123 Main St",
       apartment: "Apt 4B",
+      city: "New York",
       country: "USA",
       province: "NY",
       postalCode: "10001",
@@ -45,8 +47,10 @@ describe("BillingInfoSchema", () => {
       email: "test@example.com",
       clientType: "particular",
       firstName: "John",
+      // lastName is missing
       address: "123 Main St",
       apartment: "Apt 4B",
+      city: "New York",
       country: "USA",
       province: "NY",
       postalCode: "10001",
@@ -65,9 +69,12 @@ describe("BillingInfoSchema", () => {
       lastName: "Doe",
       address: "123 Main St",
       apartment: "Apt 4B",
+      city: "New York",
+      country: "USA",
       province: "NY",
       postalCode: "10001",
       phone: "123-456-7890",
+      // company is missing
       taxNumber: "123456789",
     };
 
@@ -83,11 +90,13 @@ describe("BillingInfoSchema", () => {
       lastName: "Doe",
       address: "123 Main St",
       apartment: "Apt 4B",
+      city: "New York",
       country: "USA",
       province: "NY",
       postalCode: "10001",
       phone: "123-456-7890",
       company: "Example Corp",
+      // taxNumber is missing
     };
 
     const validation = BillingInfoSchema.safeParse(billingInfo);
@@ -102,6 +111,7 @@ describe("BillingInfoSchema", () => {
       lastName: "Doe",
       address: "123 Main St",
       apartment: "Apt 4B",
+      city: "New York",
       country: "USA",
       province: "NY",
       postalCode: "10001",
