@@ -17,17 +17,30 @@ const baseSchema = z.object({
   taxNumber: z.string().optional(),
 });
 
-export const BillingInfoSchema = baseSchema.refine(
-  (data) => {
-    if (data.clientType === "company") {
-      return data.company !== undefined && data.taxNumber !== undefined;
+export const BillingInfoSchema = baseSchema
+  .refine(
+    (data) => {
+      if (data.clientType === "company") {
+        return Boolean(data.company);
+      }
+      return true;
+    },
+    {
+      message: "Company is a required for company client type",
+      path: ["company"],
     }
-    return true;
-  },
-  {
-    message: "Company and tax number are required for company client type",
-    path: ["company"],
-  }
-);
+  )
+  .refine(
+    (data) => {
+      if (data.clientType === "company") {
+        return Boolean(data.taxNumber);
+      }
+      return true;
+    },
+    {
+      message: "Tax number is a required for company client type",
+      path: ["taxNumber"],
+    }
+  );
 
 export type BillingInfo = z.infer<typeof BillingInfoSchema>;
