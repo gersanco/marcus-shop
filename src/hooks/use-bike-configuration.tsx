@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FaBicycle, FaCog, FaPalette } from "react-icons/fa";
-import { Product } from "../schemas/product-schema";
+import { PartType, Product } from "../schemas/product-schema";
 
 type Part = {
   id: string;
@@ -11,12 +11,12 @@ type Part = {
 const bikeParts: Part[] = [
   {
     id: "frameType",
-    name: "Frame",
+    name: "Frame Type",
     icon: <FaBicycle className="w-6 h-6" />,
   },
   {
     id: "frameFinish",
-    name: "Suspension",
+    name: "Frame Finish",
     icon: <FaPalette className="w-6 h-6" />,
   },
   {
@@ -38,9 +38,13 @@ const bikeParts: Part[] = [
 
 export default function useBikeConfiguration(partProducts: Product[]) {
   const [currentStep, setCurrentStep] = useState(0);
-  const [selectedParts, setSelectedParts] = useState<Record<string, string>>(
-    {}
-  );
+  const [selectedParts, setSelectedParts] = useState<Record<PartType, string>>({
+    chain: "",
+    frameFinish: "",
+    frameType: "",
+    rim: "",
+    wheel: "",
+  });
 
   const handleNext = () => {
     if (currentStep < bikeParts.length - 1) {
@@ -62,6 +66,10 @@ export default function useBikeConfiguration(partProducts: Product[]) {
     (part) => part.type === currentPart.id
   );
 
+  const handlePartSelection = (typeId: string, partId: string) => {
+    setSelectedParts((prev) => ({ ...prev, [typeId]: partId }));
+  };
+
   return {
     bikeParts,
     isLastStep,
@@ -69,7 +77,7 @@ export default function useBikeConfiguration(partProducts: Product[]) {
     handlePrevious,
     currentStep,
     selectedParts,
-    setSelectedParts,
+    handlePartSelection,
     currentPart,
     availableParts,
   };
