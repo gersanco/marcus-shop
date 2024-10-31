@@ -6,31 +6,31 @@ import Button from "../button";
 type Props = {
   part: Product;
   handlePartSelection: (typeId: PartType, partId: string) => void;
+  checkIsAvailablePart: (partId: string, typeId: PartType) => boolean;
+  isSelectedPart: (partId: string, type: PartType) => boolean;
 };
 export default function BikeConfigurationOption({
   part,
   handlePartSelection,
+  checkIsAvailablePart,
+  isSelectedPart,
 }: Props) {
+  const hasSelected = isSelectedPart(part.uid as string, part.type as PartType);
+  const isAvailable = checkIsAvailablePart(
+    part.uid as string,
+    part.type as PartType
+  );
+
   return (
     <Button
-      variant="outline"
+      variant={!hasSelected ? "outline" : undefined}
+      color={hasSelected ? "primary" : "neutral"}
+      disabled={!isAvailable}
       onClick={() =>
         handlePartSelection(part.type as PartType, part.uid as string)
       }
     >
       {part.title} - {part.price} €
     </Button>
-
-    // <button
-    //   className={`btn ${
-    //     selectedParts[currentPart.id]?.name === option.name
-    //       ? "btn-primary"
-    //       : "btn-outline"
-    //   } ${!isOptionAvailable(option) ? "btn-disabled opacity-50" : ""}`}
-    //   onClick={() => handlePartSelection(currentPart.id, option)}
-    //   disabled={!isOptionAvailable(option)}
-    // >
-    //   {option.name} - ${calculateOptionPrice(option)}
-    // </button>
   );
 }

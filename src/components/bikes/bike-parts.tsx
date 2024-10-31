@@ -19,6 +19,8 @@ export default function BikeParts({ parts }: Props) {
     availableParts,
     handlePartSelection,
     selectedParts,
+    checkIsAvailablePart,
+    isSelectedPart,
   } = useBikeConfiguration(parts);
 
   return (
@@ -42,6 +44,8 @@ export default function BikeParts({ parts }: Props) {
                 part={part}
                 key={part.uid}
                 handlePartSelection={handlePartSelection}
+                checkIsAvailablePart={checkIsAvailablePart}
+                isSelectedPart={isSelectedPart}
               />
             ))}
           </div>

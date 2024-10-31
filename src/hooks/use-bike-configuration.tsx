@@ -70,6 +70,34 @@ export default function useBikeConfiguration(partProducts: Product[]) {
     setSelectedParts((prev) => ({ ...prev, [typeId]: partId }));
   };
 
+  const checkIsAvailablePart = (partId: string, type: PartType) => {
+    const partSelectedId = selectedParts[type];
+
+    const partSelecteIds = Object.entries(selectedParts)
+      .map((value) => value[1])
+      .filter((val) => val !== "");
+
+    const bikePart = partProducts.find((part) => part.uid === partId);
+
+    if (!bikePart) return false;
+
+    if (bikePart.inStock === 0) {
+      return false;
+    }
+
+    if (bikePart.availableFor?.length === 0) return true;
+
+    return (
+      bikePart.availableFor?.some((availableId) =>
+        partSelecteIds.includes(availableId)
+      ) ?? true
+    );
+  };
+
+  const isSelectedPart = (partId: string, type: PartType) => {
+    return selectedParts[type] === partId;
+  };
+
   return {
     bikeParts,
     isLastStep,
@@ -80,5 +108,7 @@ export default function useBikeConfiguration(partProducts: Product[]) {
     handlePartSelection,
     currentPart,
     availableParts,
+    checkIsAvailablePart,
+    isSelectedPart,
   };
 }
