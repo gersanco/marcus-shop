@@ -34,14 +34,14 @@ describe("ProductSchema", () => {
 
   test("should invalidate a product with incorrect types", () => {
     const product = {
-      uid: 123, // uid should be a string
+      uid: 123,
       title: "Sample Product",
       description: "This is a sample product.",
-      price: "29.99", // price should be a number
-      inStock: "10", // inStock should be a number
+      price: "29.99",
+      inStock: "10",
       category: "Electronics",
       slug: "sample-product",
-      image: 12345, // image should be a string (URL)
+      image: 12345,
     };
 
     const validation = ProductSchema.safeParse(product);
@@ -57,6 +57,86 @@ describe("ProductSchema", () => {
       inStock: 10,
       category: "Electronics",
       slug: "sample-product",
+      image: "https://example.com/sample-product.jpg",
+    };
+
+    const validation = ProductSchema.safeParse(product);
+    expect(validation.success).toBe(false);
+  });
+
+  test("should invalidate a product with negative inStock", () => {
+    const product = {
+      uid: "123",
+      title: "Sample Product",
+      description: "This is a sample product.",
+      price: 29.99,
+      inStock: -10,
+      category: "Electronics",
+      slug: "sample-product",
+      image: "https://example.com/sample-product.jpg",
+    };
+
+    const validation = ProductSchema.safeParse(product);
+    expect(validation.success).toBe(false);
+  });
+
+  test("should invalidate a product with empty title", () => {
+    const product = {
+      uid: "123",
+      title: "",
+      description: "This is a sample product.",
+      price: 29.99,
+      inStock: 10,
+      category: "Electronics",
+      slug: "sample-product",
+      image: "https://example.com/sample-product.jpg",
+    };
+
+    const validation = ProductSchema.safeParse(product);
+    expect(validation.success).toBe(false);
+  });
+
+  test("should invalidate a product with empty description", () => {
+    const product = {
+      uid: "123",
+      title: "Sample Product",
+      description: "",
+      price: 29.99,
+      inStock: 10,
+      category: "Electronics",
+      slug: "sample-product",
+      image: "https://example.com/sample-product.jpg",
+    };
+
+    const validation = ProductSchema.safeParse(product);
+    expect(validation.success).toBe(false);
+  });
+
+  test("should invalidate a product with empty category", () => {
+    const product = {
+      uid: "123",
+      title: "Sample Product",
+      description: "This is a sample product.",
+      price: 29.99,
+      inStock: 10,
+      category: "",
+      slug: "sample-product",
+      image: "https://example.com/sample-product.jpg",
+    };
+
+    const validation = ProductSchema.safeParse(product);
+    expect(validation.success).toBe(false);
+  });
+
+  test("should invalidate a product with empty slug", () => {
+    const product = {
+      uid: "123",
+      title: "Sample Product",
+      description: "This is a sample product.",
+      price: 29.99,
+      inStock: 10,
+      category: "Electronics",
+      slug: "",
       image: "https://example.com/sample-product.jpg",
     };
 
