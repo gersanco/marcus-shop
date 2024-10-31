@@ -6,7 +6,7 @@ import Button from "../button";
 type Props = {
   part: Product;
   handlePartSelection: (typeId: PartType, partId: string) => void;
-  checkIsAvailablePart: (partId: string, typeId: PartType) => boolean;
+  checkIsAvailablePart: (partId: string) => boolean;
   isSelectedPart: (partId: string, type: PartType) => boolean;
 };
 export default function BikeConfigurationOption({
@@ -16,10 +16,7 @@ export default function BikeConfigurationOption({
   isSelectedPart,
 }: Props) {
   const hasSelected = isSelectedPart(part.uid as string, part.type as PartType);
-  const isAvailable = checkIsAvailablePart(
-    part.uid as string,
-    part.type as PartType
-  );
+  const isAvailable = checkIsAvailablePart(part.uid as string);
 
   return (
     <Button

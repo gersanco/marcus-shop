@@ -70,7 +70,7 @@ export default function useBikeConfiguration(partProducts: Product[]) {
     setSelectedParts((prev) => ({ ...prev, [typeId]: partId }));
   };
 
-  const checkIsAvailablePart = (partId: string, type: PartType) => {
+  const checkIsAvailablePart = (partId: string) => {
     const partSelecteIds = Object.entries(selectedParts)
       .map((value) => value[1])
       .filter((val) => val !== "");
