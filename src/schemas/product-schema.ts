@@ -1,5 +1,7 @@
 import { z } from "zod";
 
+export type PartType = "frameType" | "frameFinish" | "wheel" | "rim" | "chain";
+
 export const ProductSchema = z.object({
   uid: z.string().min(1, { message: "UID cannot be empty" }).optional(),
   title: z.string().min(1, { message: "Title cannot be empty" }),

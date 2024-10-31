@@ -1,4 +1,5 @@
-import { products_data } from "../data/products";
+import { products_data } from "@/data/products";
+import { PartType } from "@/schemas/product-schema";
 
 export function listProducts(category?: string) {
   if (category) {
@@ -10,4 +11,8 @@ export function listProducts(category?: string) {
 
 export function findProduct(slug: string) {
   return products_data.find((product) => product.slug === slug);
+}
+
+export function listParts(type: PartType) {
+  return products_data.find((product) => product.type === type);
 }
