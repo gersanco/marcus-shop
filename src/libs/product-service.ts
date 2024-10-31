@@ -5,7 +5,7 @@ export function listProducts(category?: string) {
     return products_data.filter((prod) => prod.category === category);
   }
 
-  return products_data;
+  return products_data.filter((prod) => prod.category !== "custom");
 }
 
 export function findProduct(slug: string) {
