@@ -1,6 +1,7 @@
 import React from "react";
 import { FaEuroSign } from "react-icons/fa";
 import { PartType, Product } from "@/schemas/product-schema";
+import Button from "../button";
 
 type Props = {
   isLastStep: boolean;
@@ -50,6 +51,11 @@ export default function BikeConfigurationOverview({
               <FaEuroSign className="w-6 h-6 mr-1" />
             </span>
           </div>
+          {isLastStep && (
+            <Button className="btn-block" color="primary">
+              Order Your Custom Bike
+            </Button>
+          )}
         </div>
       </div>
     </div>
