@@ -192,7 +192,7 @@ export const products_data: Product[] = [
     availableFor: ["714ff81b-c800-5c93-b1c2-8735f1b44886"],
   },
   {
-    uid: "a35a6121-be5e-503c-b250-6132369891ce",
+    uid: "6ea25afd-4327-5297-b25e-54e634edcaa7",
     title: "Matte",
     description: "A matte color",
     price: 20,
