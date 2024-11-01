@@ -7,12 +7,14 @@ type Props = {
   isLastStep: boolean;
   bikeParts: Product[];
   selectedParts: Record<PartType, string>;
+  handleConfirmOrder: () => Promise<void>;
 };
 
 export default function BikeConfigurationOverview({
   isLastStep,
   selectedParts,
   bikeParts,
+  handleConfirmOrder,
 }: Props) {
   const totalPrice = bikeParts
     .filter((part) => selectedParts[part.type as PartType] === part.uid)
@@ -52,7 +54,11 @@ export default function BikeConfigurationOverview({
             </span>
           </div>
           {isLastStep && (
-            <Button className="btn-block" color="primary">
+            <Button
+              className="btn-block"
+              color="primary"
+              onClick={handleConfirmOrder}
+            >
               Order Your Custom Bike
             </Button>
           )}

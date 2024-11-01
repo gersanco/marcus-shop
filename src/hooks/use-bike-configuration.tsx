@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaBicycle, FaCog, FaPalette } from "react-icons/fa";
 import { PartType, Product } from "../schemas/product-schema";
+import { addMultiplesProductToCartAction } from "../actions/cart";
 
 type Part = {
   id: string;
@@ -35,6 +36,12 @@ const bikeParts: Part[] = [
     icon: <FaCog className="w-6 h-6" />,
   },
 ];
+
+const parseRecordToArray = (selectedParts: Record<PartType, string>) => {
+  return Object.entries(selectedParts)
+    .map((value) => value[1])
+    .filter((val) => val !== "");
+};
 
 export default function useBikeConfiguration(partProducts: Product[]) {
   const [currentStep, setCurrentStep] = useState(0);
@@ -71,9 +78,7 @@ export default function useBikeConfiguration(partProducts: Product[]) {
   };
 
   const checkIsAvailablePart = (partId: string) => {
-    const partSelecteIds = Object.entries(selectedParts)
-      .map((value) => value[1])
-      .filter((val) => val !== "");
+    const partSelecteIds = parseRecordToArray(selectedParts);
 
     const bikePart = partProducts.find((part) => part.uid === partId);
 
@@ -96,6 +101,12 @@ export default function useBikeConfiguration(partProducts: Product[]) {
     return selectedParts[type] === partId;
   };
 
+  const handleConfirmOrder = async () => {
+    const partSelecteIds = parseRecordToArray(selectedParts);
+
+    await addMultiplesProductToCartAction(partSelecteIds);
+  };
+
   return {
     bikeParts,
     isLastStep,
@@ -108,5 +119,6 @@ export default function useBikeConfiguration(partProducts: Product[]) {
     availableParts,
     checkIsAvailablePart,
     isSelectedPart,
+    handleConfirmOrder,
   };
 }

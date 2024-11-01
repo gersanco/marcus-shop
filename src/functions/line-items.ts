@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
-import parseLineItems from "../libs/parse-line-item";
-import { listProducts } from "../libs/product-service";
+import parseLineItems from "@/libs/parse-line-item";
+import { listAllProducts } from "@/libs/product-service";
 
 export function getLineItems() {
   const cookiesStore = cookies();
@@ -8,7 +8,7 @@ export function getLineItems() {
 
   if (items.length === 0) return [];
 
-  const products = listProducts();
+  const products = listAllProducts();
 
   const lineItem = parseLineItems(products, items);
 

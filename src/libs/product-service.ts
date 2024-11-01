@@ -1,6 +1,10 @@
 import { products_data } from "@/data/products";
 import { PartType } from "@/schemas/product-schema";
 
+export function listAllProducts() {
+  return products_data;
+}
+
 export function listProducts(category?: string) {
   if (category) {
     return products_data.filter((prod) => prod.category === category);

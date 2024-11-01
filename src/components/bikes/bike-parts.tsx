@@ -21,6 +21,7 @@ export default function BikeParts({ parts }: Props) {
     selectedParts,
     checkIsAvailablePart,
     isSelectedPart,
+    handleConfirmOrder,
   } = useBikeConfiguration(parts);
 
   return (
@@ -74,6 +75,7 @@ export default function BikeParts({ parts }: Props) {
         isLastStep={isLastStep}
         selectedParts={selectedParts}
         bikeParts={parts}
+        handleConfirmOrder={handleConfirmOrder}
       />
     </div>
   );
