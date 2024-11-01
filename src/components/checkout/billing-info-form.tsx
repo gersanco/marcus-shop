@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { BillingInfo, BillingInfoSchema } from "@/schemas/billing-info-schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Radio from "../radio";
+import { addBillingInfoToCookies } from "../../actions/checkout";
 
 export default function BillingInfoForm() {
   const {
@@ -32,7 +33,11 @@ export default function BillingInfoForm() {
     reValidateMode: "onChange",
   });
 
-  const onSubmit = (data: BillingInfo) => console.log("BillingInfo", data);
+  const onSubmit = async (data: BillingInfo) => {
+    const error = await addBillingInfoToCookies(data);
+
+    if (error) alert(error);
+  };
 
   return (
     <Card className="shadow-xl">
