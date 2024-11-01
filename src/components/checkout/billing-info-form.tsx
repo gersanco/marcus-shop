@@ -8,28 +8,17 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Radio from "../radio";
 import { addBillingInfoToCookies } from "../../actions/checkout";
 
-export default function BillingInfoForm() {
+type Props = {
+  billing: BillingInfo;
+};
+export default function BillingInfoForm({ billing }: Props) {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<BillingInfo>({
     resolver: zodResolver(BillingInfoSchema),
-    defaultValues: {
-      email: "",
-      clientType: "particular",
-      company: "",
-      firstName: "",
-      lastName: "",
-      province: "",
-      address: "",
-      country: "",
-      postalCode: "",
-      phone: "",
-      apartment: "",
-      city: "",
-      taxNumber: "",
-    },
+    defaultValues: billing,
     reValidateMode: "onChange",
   });
 
