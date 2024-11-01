@@ -69,3 +69,9 @@ export function removeLineItem(itemId: string) {
 
   cookiesStore.set("cart", JSON.stringify(items));
 }
+
+export function clearLineItems() {
+  const cookiesStore = cookies();
+
+  cookiesStore.delete("cart");
+}

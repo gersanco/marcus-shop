@@ -30,3 +30,10 @@ export function setBillingInfo(billingData: BillingInfo) {
 
   cookiesStore.set("billing", JSON.stringify(billingData));
 }
+
+
+export function clearBillingInfo() {
+  const cookiesStore = cookies();
+
+  cookiesStore.delete("billing");
+}

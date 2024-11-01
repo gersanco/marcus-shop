@@ -3,7 +3,7 @@ import { OrderSchema } from "./order-schema";
 
 const validLineItem = {
   uid: "lineItem1",
-  title: "Sample Item",
+  name: "Sample Item",
   price: 100,
   quantity: 2,
   unit: "pcs",
