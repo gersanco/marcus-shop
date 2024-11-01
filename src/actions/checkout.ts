@@ -14,3 +14,7 @@ export const addBillingInfoToCookies = (billingInfo: BillingInfo) => {
 
   return response.error.message;
 };
+
+export const createOrder = () => {
+  return "";
+};
