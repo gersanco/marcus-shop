@@ -5,7 +5,7 @@ describe("LineItemSchema", () => {
   test("should validate a correct line item", () => {
     const lineItem = {
       uid: "123",
-      title: "Sample Line Item",
+      name: "Sample Line Item",
       price: 19.99,
       quantity: 2,
       unit: "pcs",
@@ -17,7 +17,7 @@ describe("LineItemSchema", () => {
 
   test("should invalidate a line item with missing required fields", () => {
     const lineItem = {
-      title: "Sample Line Item",
+      name: "Sample Line Item",
       price: 19.99,
       quantity: 2,
       unit: "pcs",
@@ -30,7 +30,7 @@ describe("LineItemSchema", () => {
   test("should invalidate a line item with incorrect types", () => {
     const lineItem = {
       uid: 123,
-      title: "Sample Line Item",
+      name: "Sample Line Item",
       price: "19.99",
       quantity: "2",
       unit: 1,
@@ -43,7 +43,7 @@ describe("LineItemSchema", () => {
   test("should invalidate a line item with negative price", () => {
     const lineItem = {
       uid: "123",
-      title: "Sample Line Item",
+      name: "Sample Line Item",
       price: -19.99,
       quantity: 2,
       unit: "pcs",
@@ -56,7 +56,7 @@ describe("LineItemSchema", () => {
   test("should invalidate a line item with non-positive quantity", () => {
     const lineItem = {
       uid: "123",
-      title: "Sample Line Item",
+      name: "Sample Line Item",
       price: 19.99,
       quantity: 0,
       unit: "pcs",
@@ -69,7 +69,7 @@ describe("LineItemSchema", () => {
   test("should validate a line item without optional unit", () => {
     const lineItem = {
       uid: "123",
-      title: "Sample Line Item",
+      name: "Sample Line Item",
       price: 19.99,
       quantity: 2,
     };
