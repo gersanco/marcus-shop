@@ -107,3 +107,28 @@ Isnstead of store in databse the cart, it uses the cookies for that purpouse, a 
 #### Administrative workflows
 
 After login using `authjs` Marcus will see a dashboard with some information, such us number of orders, products with lower stock... There will be a different menu options, wich one of the will be the products, in this view Marcus will see a table with a list of products and some filters, he can filter by category. Ones that he selected a product he will see the full info of it. In case that he needs to edit or add a new one he can add the product, and when he indicates that is custom, then the type option will be available to be selected. Also, the available for, which will show a product title and the type of the piece.
+
+#### New product creation
+
+In the private route there will be a products sections, uin that section there will list each product with a limit of 20 in order to be faster and don't charge the database. At the top of the page there will be a button with a text `Add new Product`. This button will redirect to a new page `/auth/products/new` where there will be an empty form that allow the merchant fill the info for a new product. A new Product must contain `title`, `description`, `price`, `category` and the `stock`. The `slug` property will be auto-generated with `title` and `category`.
+
+#### Adding a new part choice
+
+If merchat wants to add a new part choice for the configurator, it has to put the `custom` category. Then, the `type` field will be enabled and it has to select one of the parts type `frameType | frameFinish | wheel | rim | chain`. If one part is available for an specific config it must to add to the `availaleFor` property the relation part. It will be a selectbox with other custom parts.
+
+#### Setting prices
+
+If Marcus wants to change the price for a custom part, he has to go to the specific part and change the field.
+
+#### Improvements
+
+- This demo is not using a database. However, it allows to use a CMS such as `Strapi` or a Payment that has products like `Stripe`. In case that it requires a database, it was thought to use non-relational databases such as `Firebase` or `MongoDB`. But, it can be adapted to a relational database if needed.
+- This UI is not working on mobile due to the menu. However the pages are adapted to a mobile view. So, only Navbar needs to be adapted to the mobile.
+- The order completed page needs to get form a cookie or maybe pass to the page the order's uid to find the order data and show it to the user.
+- Needs to implement `AuthJS`.
+- Needs to implement an admin pannel for Marcus
+- Users must to be able of seing their orders
+- Users can reguister in order to make faster purchases and list olders.
+- Send invoice via email
+- Send an email with order to the customer and report there is a new order to Marcus.
+- Implement Payment.
