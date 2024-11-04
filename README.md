@@ -1,7 +1,13 @@
 
 # Getting Started
 
-First, run the development server:
+## Requirements
+
+- Node: v20.10.0
+
+First make an `npm install`
+
+Then, run the development server:
 
 ```bash
 npm run dev
@@ -14,6 +20,8 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+You can see the live result here [https://marcus-shop-lyart.vercel.app](https://marcus-shop-lyart.vercel.app)
 
 ## Description
 
@@ -63,3 +71,39 @@ This code exercise consists of defining a software architecture that could satis
 - **New product creation:** What information is required to create a new product? How does the database change?
 - **Adding a new part choice:** How can Marcus introduce a new rim color? Describe the UI and how the database changes.
 - **Setting prices:** How can Marcus change the price of a specific part or specify particular pricing for combinations of choices? How does the UI and database handle this?
+
+### Solution
+
+I used `NextJS` because it can make static urls per product and allow a good iteraction.
+
+I implemented the shop until the payment. The billing form is requesting a client type in order to make optional or not some data like `Company`or `Tax Number`.After payment maybe is needed to do some background jobs for that reason after pay the staus is gonna be `paid`.
+
+#### Data model
+
+![Data Model Schema](schema.png)
+
+**Product:** Due to allow merchat add different types of products is a generic model. With the possibility of adding images, each product has a slug to identifier each product and have a specific url per product. In case that the product has the `custom` category wich means the client will select the pieces for it's bike, the type will be required using one of `frameType | frameFinish | wheel | rim | chain`. The property `availableFor` solves the restriction parts, which means if some part is only available for an specific one or prices will be different. I considered that each condition as a different product, this allow the merchat to add new restrictions and change the prices for a custom one. If the available part is not filled for the sistem will means that it has not any restriction. It uses the uid as key.
+
+**LineItem:** This models is referring to a product, this will allow in the cart page add more units or remove from the cart. The property `unit` is in case that is needed for the billing but is optional.
+
+**Payment:** This model groups the payment info for the order, it has the Shop default tax percet which in SPain is 21%. And each calc that about prices, with the currency `EUR` by default.
+
+**BillingInfo:** This model contains the customer address with a contact email, this is needed to send the product. It contains the customer type which can be `particular` or `company`. In case that client is a company it will required the `taxNumber` and the `company name` for billing purpouses.
+
+**Order:** This model will group an array of `LineItem`, the`billing info` of the customer and the `payment data`. By default it will create the order with the current date as timestamp. The status will be `paid` to allow make some background process after payment if needed, adter that will change to `completed` and in case that customer needs there is another option `canceled`. The `uid` property is for the database.
+
+The application was created having a non-relational database.
+
+#### Main user actions
+
+The e-commerce website has a landing page which shows some info about the site and a list of categoies for bikes. If user want's an specific category after selecting one will show each bikes for that specific category. In other case user can see each bike without filter. Ones that the user selects a bike will see the bike product with a title, a description and a button to add to the cart. When client clicks on that button it will add the product uid to the cart cookie which is and arrary of uids. Then, client have the possibility of add more bikes or click in the cart icon to join to the cart page. In the cart page the client can remove the item, add or reduce the quantity. Next step is gonna be the checkout form, wich will show an overview of the items that user selected and a form about the billing information that needs to fill. In case that user press the button without fill any data, there will be a validation that shows an error and indicates to the user the data that has not be filled. Ones that the data has been filled, there will be another page to select the payment method, user will click on one and a payment flow will apppear (maybe a popup). After the payment flow, will be remove each cookies and redirect to the order-completed where it will appear an order summary.
+
+In case that client want's a custom bike, will appear a step card with the options per type. It must to select a part in order to go ahed to the next step, while in another cart will appear the aparts that were selected and the total price that will cost without taxes nor shipping price. In case that some parts are not available for one configration won be enabled and user must to press Next button. When users goes to the end of the configurator, there will appear a buttion in the summary card that redirect to the checkout form.
+
+#### Add to cart action
+
+Isnstead of store in databse the cart, it uses the cookies for that purpouse, a negative part of this option is that user can add to the cart an specific item, that if takes longer to make the payment can be without-stock. But, this can be solved checking the stock on each rendering and redirect with an error message in case that is out of stock. The bennefit is that is only storing on the database the info that is needed, products and orders.
+
+#### Administrative workflows
+
+After login using `authjs` Marcus will see a dashboard with some information, such us number of orders, products with lower stock... There will be a different menu options, wich one of the will be the products, in this view Marcus will see a table with a list of products and some filters, he can filter by category. Ones that he selected a product he will see the full info of it. In case that he needs to edit or add a new one he can add the product, and when he indicates that is custom, then the type option will be available to be selected. Also, the available for, which will show a product title and the type of the piece.
