@@ -1,4 +1,4 @@
-import type { Metadata, ResolvingMetadata } from "next";
+import type { Metadata } from "next";
 import { findProduct, listProducts } from "@/libs/product-service";
 import { notFound } from "next/navigation";
 import Image from "next/image";
