@@ -4,7 +4,7 @@ import Button from "../button";
 import Image from "next/image";
 import { DEFAULT_IMAGE } from "@/libs/constants";
 import Link from "next/link";
-import { Category } from "@/types/category";
+import { Category } from "@/schemas/product-schema";
 
 type Props = {
   category: Category;

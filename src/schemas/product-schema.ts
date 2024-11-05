@@ -1,6 +1,9 @@
 import { z } from "zod";
 
 export type PartType = "frameType" | "frameFinish" | "wheel" | "rim" | "chain";
+export type Category = "road" | "electric" | "mountain" | "custom";
+
+export const categores: Category[] = ["custom", "electric", "mountain", "road"];
 
 export const ProductSchema = z.object({
   uid: z.string().min(1, { message: "UID cannot be empty" }).optional(),
