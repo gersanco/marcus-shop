@@ -1,8 +1,16 @@
-import { findProduct } from "@/libs/product-service";
+import { findProduct, listProducts } from "@/libs/product-service";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { DEFAULT_IMAGE } from "@/libs/constants";
 import AddToCartButton from "@/components/cart/add-to-cart-button";
+
+export async function generateStaticParams() {
+  const products = listProducts();
+
+  return products.map((product) => ({
+    slug: product.slug,
+  }));
+}
 
 export default function ProductPage({ params }: { params: { slug: string } }) {
   const bike = findProduct(params.slug);
