@@ -2,6 +2,7 @@
   "name": "marcus-shop",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -20,7 +21,9 @@
   },
   "devDependencies": {
     "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.0.1",
+    "@testing-library/user-event": "^14.5.2",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
@@ -34,6 +37,7 @@
     "tailwind-merge": "^2.5.4",
     "tailwindcss": "^3.4.1",
     "typescript": "^5",
+    "vite-tsconfig-paths": "^5.1.0",
     "vitest": "^2.1.3"
   }
 }
