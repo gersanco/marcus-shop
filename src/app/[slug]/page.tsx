@@ -1,8 +1,11 @@
+import type { Metadata, ResolvingMetadata } from "next";
 import { findProduct, listProducts } from "@/libs/product-service";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { DEFAULT_IMAGE } from "@/libs/constants";
 import AddToCartButton from "@/components/cart/add-to-cart-button";
+
+type Props = { params: { slug: string } };
 
 export async function generateStaticParams() {
   const products = listProducts();
@@ -12,8 +15,28 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function ProductPage({ params }: { params: { slug: string } }) {
-  const bike = findProduct(params.slug);
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const bike = getData(params.slug);
+
+  if (!bike) {
+    notFound();
+  }
+
+  return {
+    title: bike.title,
+    description: bike.description,
+    openGraph: {
+      images: [bike.image || DEFAULT_IMAGE],
+    },
+  };
+}
+
+function getData(slug: string) {
+  return findProduct(slug);
+}
+
+export default function ProductPage({ params }: Props) {
+  const bike = getData(params.slug);
 
   if (!bike) {
     notFound();
